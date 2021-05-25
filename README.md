@@ -31,6 +31,7 @@
 4. Clone the Tensorflow models repository
 - I use resources in the Tensorflow models repository. Since it does not come with the Tensorflow installation, we need to clone it from their Github repo
 -     -git clone https://github.com/tensorflow/models.git
+- You should move to your train and test folder to /models/research/object_detection/images/ folder.
 5. Setting up the environment 
 - Install protobuf and compile, install setup.py
       !apt-get install protobuf-compiler python-pil python-lxml python-tk
@@ -55,6 +56,7 @@
          id: 2
          name: 'Smoke'
        }
+
 8. Convert XML to CSV file(.csv)
 - With the images labeled, we need to create TFRecords that can be served as input data for training the object detector.
 - To create the TFRecords, we will first convert the XML label files created with LabelImg to one CSV file using the [xml_to_csv.py ](https://github.com/ElifSeven/SSD-final/blob/main/xml_to_csv.py) script.
@@ -98,7 +100,7 @@ Here are the items you need to change:
        }
 
 11. Train
-Before to start training, you should create "**training**" folder. The model.ckpt files will be saved there in each epoch. And you should move [ssd_mobilenet_v1_pets.config](https://github.com/ElifSeven/SSD-final/blob/main/ssd_mobilenet_v1_pets.config) file to training folder.
+Before to start training, you should create "**training**" folder. The model.ckpt files will be saved there in each epoch. And you should move [ssd_mobilenet_v1_pets.config](https://github.com/ElifSeven/SSD-final/blob/main/ssd_mobilenet_v1_pets.config) file to training folder. And should move to your .pbtxt file to training folder.
 -      !pip install tf_slim
        %cd /content/gdrive/MyDrive/models/research/object_detection
        os.environ['PYTHONPATH'] += ':/content/gdrive/MyDrive/models/research/:/content/gdrive/MyDrive/models/research/slim'
