@@ -1,6 +1,6 @@
 # SSD-final
 
-#### The repository provides all the files needed to train a "flare oil & smoke" detector that can accurately detect flare oil and smoke. This readme file describes how to replace these files with your own files to train a detection classifier. It also has Python scripts to test your classifier out on an image or video.
+#### The repository provides all the files needed to train a "flare oil & smoke" detector that can accurately detect flare oil and smoke. This readme file describes how to replace these files with your own files to train a detection classifier. It also has Python scripts to test your classifier our on an image or video.
 
 ## Index of this Repository
 - [SingleShotDetector_final : ](https://github.com/ElifSeven/SSD-final/blob/main/SingleShotDetector_final.ipynb) Is the code to train and test tensorflow object detection using a pre-trained SSD MobileNet V2 model.
@@ -98,6 +98,7 @@ Here are the items you need to change:
        }
 
 11. Train
+Before to start training, you should create "**training**" folder. The model.ckpt files will be saved there in each epoch. And you should move [ssd_mobilenet_v1_pets.config](https://github.com/ElifSeven/SSD-final/blob/main/ssd_mobilenet_v1_pets.config) file to training folder.
 -      !pip install tf_slim
        %cd /content/gdrive/MyDrive/models/research/object_detection
        os.environ['PYTHONPATH'] += ':/content/gdrive/MyDrive/models/research/:/content/gdrive/MyDrive/models/research/slim'
@@ -113,4 +114,13 @@ Here are the items you need to change:
  - You need to move [custom_model_images.py](https://github.com/ElifSeven/SSD-final/blob/main/custom_model_images.py) and
  [custom_model_video.py](https://github.com/ElifSeven/SSD-final/blob/main/custom_model_video.py) to /models/research/object_detection/ path. Then you have to run:
  -     !python /content/gdrive/MyDrive/models/research/object_detection/custom_model_images.py
+
+14. To see summary metrics of model
+You should run "model_main.py" which is the under the /models/research/object_detection
+-     !python /content/gdrive/MyDrive/models/research/object_detection/model_main.py
+      --pipeline_config_path=/content/gdrive/MyDrive/models/research/object_detection/training/ssd_mobilenet_v1_pets.config
+      --model_dir=/content/gdrive/MyDrive/models/research/object_detection/new_graph
+      --eval_training_data=True
+      --checkpoint_dir=/content/gdrive/MyDrive/models/research/object_detection/training
+      --run_once=True
 
